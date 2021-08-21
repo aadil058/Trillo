@@ -1,0 +1,20 @@
+.header {
+    display: flex;
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: var(--line);
+    justify-content: space-between;
+    align-items: center;
+    // Global font-size is too small for 'search' component of header that's why we increase it here
+    // It will be inherited by descendants of header down the tree
+    font-size: 1.4rem;
+
+    @media only screen and (max-width: $bp-smallest) {
+        // Allow flex items to wrap if they can't fit in flex container
+        flex-wrap: wrap;
+        // Because of wrapping there will be more than 1 row, so we need more vertical space
+        height: 10rem;
+        // Used to align wrapped rows in the flex container
+        align-content: space-around;
+    }
+}

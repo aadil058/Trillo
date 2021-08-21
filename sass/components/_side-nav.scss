@@ -1,0 +1,107 @@
+.side-nav {
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
+
+    @media only screen and (max-width: $bp-medium) {
+       // To put elements side by side
+        display: flex;
+        margin: 0;
+    }
+
+    &__item {
+        position: relative;
+        
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+            
+            @media only screen and (max-width: $bp-medium) {
+                margin-bottom: 0;
+            }
+        }
+
+        @media only screen and (max-width: $bp-medium) {
+            flex: 1;
+        }
+    }
+
+    &__item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        // Same height as &__item
+        height: 100%;
+        // Initially 3px wide
+        width: 3px;
+        background-color: var(--color-primary);
+        
+        // Initially Y scale is zero, when hovered it returns back to original i.e., 1
+        // Scaling will start from center and expands to top and bottom simulaneously.
+        transform: scaleY(0);
+        // We can change the default transform origin using below property
+        // If we set it to bottom then scaling will start from bottom to the top
+        // transform-origin: bottom;
+
+        // transition order for ::before will be
+        // 1. In .2s scale Y (At this point 3px wide and 100% high box will scale from center)
+        // 2. After .2s start width transition using a custom bezier curve over a time period of .4s
+        //
+        // When active (When using a mouse, "activation" typically starts when the user presses down the primary mouse button) transition background-color over a time period of .1s
+        transition: transform .2s, 
+                    width .4s cubic-bezier(1, 0, 0, 1) .2s,
+                    background-color .1s;
+    }
+
+    // Select ::before pseudo class for an item which is hovered
+    // Or Selet ::before pseudo class for an item with __item--active class
+    &__item:hover::before,
+    &__item--active::before {
+        transform: scaleY(1);
+        width: 100%;
+    }
+
+    // Select ::before pseudo class for an item which is active
+    &__item:active::before {
+        background-color: var(--color-primary-light);
+    }
+
+    &__link:link,
+    &__link:visited {
+        color: var(--color-grey-light-2);
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 1.5rem 3rem;
+
+        display: flex;
+        align-items: center;
+
+        // Position is relative because z-index only works when position is defined
+        position: relative;
+        z-index: 10;
+
+        @media only screen and (max-width: $bp-medium) {
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            flex-direction: column;
+            padding: 1.5rem;
+        }
+    }
+
+    &__icon {
+        width: 1.75rem;
+        height: 1.75rem;
+        margin-right: 2rem;
+        fill: currentColor; // Inherit color of parent element if color for the current element is missing
+
+        @media only screen and (max-width: $bp-small) {
+            margin-right: 0;
+            margin-bottom: .7rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}

@@ -1,0 +1,59 @@
+.book-btn {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    border-radius: 100px;
+    border: none;
+    background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+
+    // Hide the invisible element because it overflows the parent container
+    overflow: hidden;
+
+    &__visible {
+        display: inline-block;
+        padding: 2rem 7.5rem;
+        transition: all .2s;
+    }
+
+    &__invisible {
+        display: inline-block;
+        position: absolute;
+
+        // give this element same width and height as parent (book-btn) element
+        width: 100%;
+        height: 100%;
+
+        // We only need vertical padding for this element because text is too long
+        padding: 2rem 0;
+
+        left: 0;
+        // Push the complete element to the top
+        // Bottom of this element will touch the top of book-btn
+        top: -100%;
+
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+    }
+
+    &:hover &__visible {
+        // can't use top for this element because it's not absolute positioned
+        // Push complete element to bottom
+        transform: translateY(100%);
+    }
+
+    &:hover &__invisible {
+        // With top set to 0, __invisible will completely overlap the book-btn
+        top: 0;
+    }
+
+    &:focus {
+        outline: none;
+        animation: pulsate 1s infinite;
+    }
+}

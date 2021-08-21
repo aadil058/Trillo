@@ -1,0 +1,29 @@
+.recommend {
+    font-size: 1.3rem; 
+    color: var(--color-grey-dark-3);
+
+    display: flex;
+    align-items: center;
+
+    &__count {
+        margin-right: auto;
+    }
+
+    &__friends {
+        display: flex;  // items in &__photo will always be side by side because no-wrap is set by default
+    }
+
+    &__photo {
+        // We want border to not be part of width and height
+        box-sizing: content-box;
+        height: 3.5rem;
+        width: 3.5rem;
+        border-radius: 50%;
+        border: 3px solid #fff;
+
+        // Except last image shift all the right to get the overlap effect
+        &:not(:last-child) {
+            margin-right: -1.5rem;
+        }
+    }
+}

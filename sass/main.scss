@@ -1,0 +1,98 @@
+////////////////// IMPORTANT LINK ////////////////////////////////
+// https://itnext.io/structuring-your-sass-projects-c8d41fa55ed4
+
+// How do we structure our Sass projects?
+// We do this by dividing up our stylesheets into separate files using Partials. The separate files will represent different components. 
+// We then import our partials using an @import directive, into one master stylesheet — typically the main.scss file.
+
+// If you’re using Sass on a small project, for example - a single web page. A very minimal structure could be as follows:
+// _base.scss - contained within this file are all your resets, variables, mixins, and any utility classes.
+// _layout.scss - contains all the CSS that handles the layout, such as the container and any grid systems.
+// _components.scss - anything reusable such as buttons, navbars, cards etc.
+// main.scss - it should ONLY contain the imports for the above files.
+// If any file grows too cluttered or disorganized, it’s time to expand our structure. Consider adding a folder for your components for example, and breaking it up into individual files such as _button.scss & _carousel.scss.
+
+// The 7–1 Pattern
+// The architecture known as the 7–1 pattern (7 folders, 1 file), is a widely-adopted structure that serves as a basis for large projects. 
+// You have all your partials organised into 7 different folders, and a single file sits at the root level (usually named main.scss) to handle the imports — 
+// which is the file you compile into CSS.
+// sass/
+// |
+// |– abstracts/ (or utilities/)
+// |   |– _variables.scss    // Sass Variables
+// |   |– _functions.scss    // Sass Functions
+// |   |– _mixins.scss       // Sass Mixins
+// |
+// |– base/
+// |   |– _reset.scss        // Reset/normalize
+// |   |– _typography.scss   // Typography rules
+// |
+// |– components/ (or modules/)
+// |   |– _buttons.scss      // Buttons
+// |   |– _carousel.scss     // Carousel
+// |   |– _slider.scss       // Slider
+// |
+// |– layout/
+// |   |– _navigation.scss   // Navigation
+// |   |– _grid.scss         // Grid system
+// |   |– _header.scss       // Header
+// |   |– _footer.scss       // Footer
+// |   |– _sidebar.scss      // Sidebar
+// |   |– _forms.scss        // Forms
+// |
+// |– pages/
+// |   |– _home.scss         // Home specific styles
+// |   |– _about.scss        // About specific styles
+// |   |– _contact.scss      // Contact specific styles
+// |
+// |– themes/
+// |   |– _theme.scss        // Default theme
+// |   |– _admin.scss        // Admin theme
+// |
+// |– vendors/
+// |   |– _bootstrap.scss    // Bootstrap
+// |   |– _jquery-ui.scss    // jQuery UI
+// |
+// `– main.scss              // Main Sass file
+//
+// Abstracts (or utilities): holds Sass tools, helper files, variables, functions, mixins and other config files. These files are meant to be just helpers which don’t output any CSS when compiled.
+// Base: holds the boilerplate code for the project. Including standard styles such as resets and typographic rules, which are commonly used throughout your project.
+// Components (or modules): holds all of your styles for buttons, carousels, sliders, and similar page components (think widgets). Your project will typically contain a lot of component files — as the whole site/app should be mostly composed of small modules.
+// Layout: contains all styles involved with the layout of your project. Such as styles for your header, footer, navigation and the grid system.
+// Pages: any styles specific to individual pages will sit here. For example it’s not uncommon for the home page of your site to require page specific styles that no other page receives.
+// Themes: this is likely not used in many projects. It would hold files that create project specific themes. For example if sections of your site contain alternate color schemes.
+// Vendors: contains all third party code from external libraries and frameworks — such as Normalize, Bootstrap, jQueryUI, etc. However, there is often a need to override vendor code. If this is required, its good practice to create a new folder called vendors-extensions/ and then name any files after the vendors they overwrite. The filevendors-extensions/_bootstrap.scss would contain all your Bootstrap overrides — as editing the vendor files themselves, isn’t generally a good idea.
+// Main.scss: This file should only contain your imports!
+
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/base";
+@import "base/animations";
+@import "base/typography";
+@import "base/utilities";
+
+@import "components/book-btn";
+@import "components/btn-inline";
+@import "components/cta";
+@import "components/description";
+@import "components/gallery";
+@import "components/list";
+@import "components/logo";
+@import "components/legal";
+@import "components/overview";
+@import "components/paragraph";
+@import "components/recommend";
+@import "components/review";
+@import "components/side-nav";
+@import "components/search";
+@import "components/user-nav";
+@import "components/user-reviews";
+
+@import "layout/body";
+@import "layout/detail";
+@import "layout/header";
+@import "layout/view";
+@import "layout/sidebar";
+
+@import "pages/home";

@@ -1,0 +1,40 @@
+.book-btn {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-radius: 100px;
+  border: none;
+  background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+  color: #fff;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+.book-btn__visible {
+  display: inline-block;
+  padding: 2rem 7.5rem;
+  transition: all 0.2s;
+}
+.book-btn__invisible {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 2rem 0;
+  left: 0;
+  top: -100%;
+  transition: all 0.2s;
+}
+.book-btn:hover {
+  background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+}
+.book-btn:hover .book-btn__visible {
+  transform: translateY(100%);
+}
+.book-btn:hover .book-btn__invisible {
+  top: 0;
+}
+.book-btn:focus {
+  outline: none;
+  animation: pulsate 1s infinite;
+}

@@ -1,0 +1,6 @@
+// Difference between last-child and last-of-type
+// Difference between first-child and first-of-type
+// https://stackoverflow.com/a/24657721/6309913
+.paragraph:not(:last-of-type) {
+    margin-bottom: 2rem;
+}

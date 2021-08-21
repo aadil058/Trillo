@@ -1,0 +1,16 @@
+.detail {
+    display: flex;
+    padding: 4.5rem;
+    background-color: var(--color-grey-light-1);
+    border-bottom: var(--line);
+    // Change font-size from global font size to this for all its descendants.
+    font-size: 1.4rem;
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 3rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+    }
+}

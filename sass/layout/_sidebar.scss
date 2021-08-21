@@ -1,0 +1,11 @@
+.sidebar {
+    background-color: var(--color-grey-dark-1);
+    // doesn't want it to grow or shrink, but set basis to 18% of parent
+    // Also due to percentage it will automatically shrink with shrinking screen size
+    flex: 0 0 18%;
+
+    // This flex child is also a flex container
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

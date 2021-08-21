@@ -1,0 +1,39 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    // Why inherit box-sizing?
+    // https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+    // Inherit box sizing from `html`
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+
+    /* Don't use pixel values. In order to avoid overriding browser's font size settings that user can manually change. */
+    /* font-size: 10px; */
+
+    /* 62.5% is equal to 62.5% of default 16px font-size which is equal to 10px. If user changes font-size then this percentage resultant font-size will also change accordingly */
+    // One could argue this font-size belongs to _typograhpy.scss but in this case purpose of font-size is to define what one rem should be.
+    // 10px/16px = 62.5%
+    font-size: 62.5%;   // Translates to 1rem == 10px with default browser's font-size settings.
+
+    @media only screen and (max-width: $bp-large) {
+        font-size: 50%; // 8px == (8px/16px = 50%)
+    }
+
+    @media only screen and (max-width: $bp-mobile-small) {
+        font-size: 43.75%; // 7px == (7px/16px = 43.75%)
+    }
+}
+
+body {
+    background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
+    // Resize the background-image to cover the entire container, even if it has to scale the image (while preserving the aspect ratio)
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    min-height: 100vh;
+}

@@ -1,0 +1,8 @@
+/* Apply font property using body element selector. We do this because properties related to fonts are usually inherited. Using this approach is more efficient and popular approach 
+than using universal selector */
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-grey-dark-2);
+}

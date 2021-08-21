@@ -1,0 +1,72 @@
+.review {
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+
+    @media only screen and (max-width: $bp-medium) {
+        margin-bottom: 3rem;
+        padding: 2rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        width: 100%;
+    }
+
+    &::before {
+        content: "\201C";  // QUOTE
+        position: absolute;
+        top: -2.75rem;
+        left: -1rem;
+        font-size: 20rem;
+        // https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
+        // font-size is very big which were causing a very big line height and issues in alignment.
+        line-height: 1;
+        color: var(--color-grey-light-2);
+        // Quote wasn't looking great with open sans fonts
+        font-family: sans-serif;
+        z-index: 1;
+    }
+
+    &__text {
+        margin-bottom: 2rem;
+        z-index: 10;
+        position: relative; // z-index only works when a position is set
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+    }
+
+    &__photo {
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 50%;
+    }
+
+    &__user-box {
+        margin-left: 1.5rem;
+        margin-right: auto;
+    }
+
+    &__user-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: .4rem;
+    }
+
+    &__user-date {
+        font-size: 1rem;
+        color: var(--color-grey-dark-3);
+    }
+
+    &__rating {
+        color: var(--color-primary);
+        font-size: 2.2rem;
+        font-weight: 300;
+    }
+}

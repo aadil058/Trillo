@@ -1,0 +1,21 @@
+.main-container {
+    max-width: 120rem;
+    margin: 8rem auto;
+    background-color: var(--color-grey-light-2);
+    box-shadow: var(--shadow-dark);
+
+    // max-width because this is a desktop-first pattern
+    @media only screen and (max-width: $bp-largest) {
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+.main-content {
+    display: flex;
+
+    @media only screen and (max-width: $bp-medium) {
+        flex-direction: column;
+    }
+}

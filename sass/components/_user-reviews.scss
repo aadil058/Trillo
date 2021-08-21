@@ -1,0 +1,9 @@
+.user-reviews {
+    // Occupy remaining space
+    flex: 1;
+
+    // center user-reviews children horizontally
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,12 @@
+.gallery {
+    // To lay out image horizontally
+    display: flex;
+
+    &__photo {
+        // By default 'image' has a little whitespace at the bottom, it can be fixed by setting display to block.
+        display: block;
+        // With default no-wrap on parent flex container, each child will get equal space.
+        // Use 100% to claim all of its available space.
+        width: 100%;
+    }
+}

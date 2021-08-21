@@ -1,0 +1,76 @@
+.search {
+    // we don't want it to grow, we don't want it to shrink, only set the basis to 40% of header container
+    // It will shrink automatically as basis is dynamic
+    flex: 0 0 40%;
+
+    // Flex item has become flex container. ITS ALLOWED
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-smallest) {
+        // All the other elements logo, user-nav have order '0' by default
+        // By setting order 1 it will be the last element
+        order: 1;
+
+        // No shrink, No grow, 100% Width
+        // And since header will 'wrap' for screens smaller than bp-smallest, it will move to the next line
+        flex: 0 0 100%;
+
+        background-color: var(--color-grey-light-2);
+    }
+
+    &__input {
+        // input doesn't inherit font properties automatically, We have to force it.
+        font-family: inherit;
+        font-size: inherit;
+        background-color: var(--color-grey-light-2);
+        border: none;
+        padding: .7rem 2rem;
+        border-radius: 100px;
+        // Initially it takes less space. It expands when focused.
+        width: 90%;
+        transition: all .3s;
+        // In order for search button to overlap 'input' we will shift the input to the right just a little
+        margin-right: -3.25rem;
+        outline: none;
+
+        &:focus {
+            width: 100%;
+            background-color: var(--color-grey-light-3);
+        }
+
+        &::-webkit-input-placeholder {
+            font-weight: 100;
+            color: var(--color-grey-light-4);
+        }
+    }
+
+    // When input is focused select adjacent button
+    &__input:focus + &__button {
+        background-color: var(--color-grey-light-3);
+    }
+
+    // Width is defined for 'search' component. It's children 'input' and 'button' are laid out side by side inside it
+    // Initially 'input' is forced to take 90% of the 'search' component's width and when focused it takes 100% width
+    // Since position of 'button' depends on the width of 'input' (i.e., always align to its right), 'button' moves when the width of 'input' increases on focus
+    &__button {
+        border: none;
+        background-color: var(--color-grey-light-2);
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            transform: translateY(2px);
+        }
+    }
+
+    &__icon {
+        width: 2rem;
+        height: 2rem;
+        // Fill the svg's color
+        fill: var(--color-grey-dark-3);
+    }
+}

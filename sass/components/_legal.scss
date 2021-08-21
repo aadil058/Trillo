@@ -1,0 +1,12 @@
+.legal {
+    display: block;
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--color-grey-light-4);
+    padding: 2.5rem;
+
+    @media only screen and (max-width: $bp-medium) {
+        // Hide 'legal' for screen sizes smaller than bp-medium
+        display: none;
+    }
+}

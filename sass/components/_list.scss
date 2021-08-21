@@ -1,0 +1,50 @@
+.list {
+    list-style: none;
+    margin: 3rem 0;
+    padding: 3rem 0;
+    border-top: var(--line);
+    border-bottom: var(--line);
+
+    display: flex;
+    // default value is no-wrap (all children try to fit in single line)
+    // With wrap they take as much as they need and rest moves to the next line
+    flex-wrap: wrap;
+
+    // Each item should take 50% of the available width in the flex container
+    // End result is a 2-column grid
+    &__item {
+        flex: 0 0 50%;
+        margin-bottom: .7rem;
+        
+        @media only screen and (max-width: $bp-smallest) {
+            text-align: center;
+        }
+        
+    }
+
+    &__item::before {
+        content: "";
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        margin-right: .7rem;
+
+        // OLD BROWSERS
+        background-image: url(../img/chevron-thin-right.svg);
+        background-size: cover;
+
+        // NEW BROWSERS - MASKS
+        @supports (-webkit-mask-image: url(../img/chevron-thin-right.svg)) or (mask-image: url(../img/chevron-thin-right.svg)) {
+            background-color: var(--color-primary);
+            // The mask-image CSS property sets the image that is used as mask layer for an element. 
+            // https://css-tricks.com/almanac/properties/m/mask-image/
+            -webkit-mask-image: url(../img/chevron-thin-right.svg);
+            -webkit-mask-size: cover;
+            mask-image: url(../img/chevron-thin-right.svg);
+            mask-size: cover;   // Icon should cover the entire element
+
+            // To get rid of background-image used for older browsers
+            background-image: none;
+        }
+    }
+}
